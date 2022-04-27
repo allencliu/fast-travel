@@ -1,0 +1,43 @@
+body {
+	background-color: #FFFAF0;
+	overflow-x: hidden;
+}
+#brief_text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	text-align: center;
+	font-family: 'Alegreya';
+	font-size: 80px;
+}
+
+.navigation {
+	font-family: 'Alegreya Sans SC';
+	font-size: 18px;
+}
+
+#logo_text {
+	 font-family: 'Alegreya';
+	 font-size: 26px;
+}
+
+.about {
+	font-family: 'Didact Gothic';
+}
+
+h5 {
+	Font-family: 'Didact Gothic';
+	font-weight: bold;
+	color: #E19F7D;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	color: #E19F7D;
+}
