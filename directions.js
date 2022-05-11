@@ -176,34 +176,36 @@ function sendToDatabase() {
     jsonString = JSON.stringify(info);
     console.log(jsonString);
     a=$.ajax({
-        type: "POST",
-        url: "http://172.17.12.181/final.php?method=setLookup&location=%20&sensor=%20&value=" + jsonString,
-        success: function(output) {
-            console.log(output);
-        }
+	type: "POST",
+        url: "http://172.17.12.181/final.php",
+	    //dataType: "json",
+	    data: {method: "setLookup", location: " ", sensor: " ", value: jsonString},	
+	    success: function(output) {
+		    console.log(output);
+	    }
     });
 }
 
 function secondsToHms(d) {
-    d = Number(d);
-    var h = Math.floor(d / 3600);
-    var m = Math.floor(d % 3600 / 60);
-    var s = Math.floor(d % 3600 % 60);
+	d = Number(d);
+	var h = Math.floor(d / 3600);
+	var m = Math.floor(d % 3600 / 60);
+	var s = Math.floor(d % 3600 % 60);
 
-    var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
-    var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
-    var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
-    return hDisplay + mDisplay + sDisplay; 
+	var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
+	var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
+	var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+	return hDisplay + mDisplay + sDisplay; 
 }
 
 function getTrafficDelay(trafficDelayInSeconds) {
-    if (trafficDelayInSeconds == 0) {
-        return "with no traffic delays";
-    } else {
-        return "with a traffic delay of " + secondsToHms(trafficDelayInSeconds);
-    }
+	if (trafficDelayInSeconds == 0) {
+		return "with no traffic delays";
+	} else {
+		return "with a traffic delay of " + secondsToHms(trafficDelayInSeconds);
+	}
 }
 
 function toMiles(meters) {
-    return Math.round((meters * 0.000621371192) * 100) / 100;
+	return Math.round((meters * 0.000621371192) * 100) / 100;
 }
