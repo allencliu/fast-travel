@@ -10,6 +10,7 @@ var info;
 
 $( document ).ready(function() {
     $("#directionsForm").submit(function(event) {
+        $("#displayDirections").html("");
         event.preventDefault();
         info ={
             "request": {
@@ -49,8 +50,16 @@ $( document ).ready(function() {
               }
             }
           };
-        $("#displayDirections").html("");
         checkHilly();
+    });
+
+    $("#clearBtn").click(function() {
+        $("#displayDirections").html("");
+        $("#startingAddress").val("");
+        $("#endingAddress").val("");
+        $("#routeType").val("");
+        $("#modeOfTravel").val("");
+        $("#hilliness").val("");
     });
 });
 const sleep = (ms) =>
@@ -149,14 +158,14 @@ function calcRoute(startingLat, startingLon, endingLat, endingLon) {
             // info.response.instructions.timeToNextInstruct[i] = time;
             // info.response.instructions.milesToNextInstruct[i] = miles;
             $("#displayDirections").append(`<img src="${src}">`);
-            $("#displayDirections").append(`<div class="directions"> ${instruct[i].message} and in ${time} for ${miles} miles </div>`);
+            $("#displayDirections").append(`<div class="directions">${instruct[i].message} and in ${time} for ${miles} miles </div>`);
         }
         let srcEnd = await displayMap(instruct[instruct.length - 1].point.longitude, instruct[instruct.length - 1].point.latitude);
         let arrive = instruct[instruct.length - 1].message;
         info.response.arrived.mapImgURL = srcEnd;
         info.response.arrived.arrivedMsg = arrive;
         $("#displayDirections").append(`<img src="${srcEnd}">`);
-        $("#displayDirections").append(`<div class="directions"> ${arrive}</div>`);
+        $("#displayDirections").append(`<div class="directions">${arrive}</div>`);
         sendToDatabase();
 	    }).fail(function(error) {
             console.log(error);
