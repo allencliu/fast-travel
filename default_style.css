@@ -51,8 +51,20 @@ h5 {
 .summary {
 	font-size: larger;
 	font-family: 'Didact Gothic';
+	font-weight: bold;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 75%;
 }
 
 #clearBtn {
 	margin-left: 25px;
 }
+
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 75%;
+  }
