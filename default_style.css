@@ -44,9 +44,15 @@ h5 {
 .directions {
 	font-family: 'Didact Gothic';
 	padding-bottom: 50px;
+	font-weight: bold;
+	font-size: larger;
 }
 
 .summary {
 	font-size: larger;
 	font-family: 'Didact Gothic';
+}
+
+#clearBtn {
+	margin-left: 25px;
 }
